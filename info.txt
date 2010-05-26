@@ -1,0 +1,3 @@
+From:
+
+http://www.kriesi.at/archives/create-simple-tooltips-with-css-and-jquery
