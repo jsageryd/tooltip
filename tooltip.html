@@ -12,10 +12,12 @@
 					if($(this).attr("title") != ""){
 						$(this).removeAttr("title").mouseover(function(){
 							my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(200);
+							$(this).addClass("hover");
 						}).mousemove(function(kmouse){
 							my_tooltip.css({left:kmouse.pageX+15, top:kmouse.pageY+15});
 						}).mouseout(function(){
 							my_tooltip.fadeOut(100);
+							$(this).removeClass("hover");
 						});
 					}
 				});
