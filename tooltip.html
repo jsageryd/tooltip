@@ -10,16 +10,17 @@
 					$("body").append("<div class=\"" + name + "\" id=\"" + name + i + "\"><p>" + $(this).attr('title') + "</p></div>");
 					var my_tooltip = $("#" + name + i);
 					$(this).removeAttr("title").mouseover(function(){
-						my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(400);
+						my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(200);
 					}).mousemove(function(kmouse){
 						my_tooltip.css({left:kmouse.pageX+15, top:kmouse.pageY+15});
 					}).mouseout(function(){
-						my_tooltip.fadeOut(200);
+						my_tooltip.fadeOut(100);
 					});
 				});
 			}
 			$(document).ready(function(){
 				simple_tooltip("div", "tooltip");
+				simple_tooltip("span", "tooltip");
 			});
 		</script>
 		<style>
@@ -27,21 +28,21 @@
 				font: 12px Verdana;
 			}
 			.tooltip {
-				background-color: #dedede;
+				background-color: #ccc;
 				border: 1px solid #eee;
 				padding: 3px;
 				position: absolute;
-				width: 200px;
+				width: 150px;
 				display: none;
 			}
 			.tooltip p {
 				color: #fff;
 				background-color: #222;
-				padding: 5px 8px;
+				padding: 3px 6px;
 				margin: 0;
 		</style>
 	</head>
 	<body>
-		<div title="Hi!">Mouseover me</a>
+		<span title="むずかしい">難しい</span><span title="かんじ">漢字</span>
 	</body>
 </html>
