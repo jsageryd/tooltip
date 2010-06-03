@@ -57,7 +57,7 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 				// Animate if the relative position of the tooltip has changed
 				if(!first_hover && (top_delta != last_top_delta || left_delta != last_left_delta)){
 					animating_tooltip = true;
-					my_tooltip.animate({left:left_pos, top:top_pos}, 50, 'swing', function(){ animating_tooltip = false; });
+					my_tooltip.animate({left:left_pos, top:top_pos}, 80, 'swing', function(){ animating_tooltip = false; });
 				}else{
 					my_tooltip.css({left:left_pos, top:top_pos});
 				}
