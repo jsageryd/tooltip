@@ -13,7 +13,7 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 			}
 			var my_tooltip = jQuery("#" + tooltip_class + i);
 			jQuery(this).removeAttr(attribute_name).mouseover(function(){
-				my_tooltip.css({opacity:0.9, display:"none"}).fadeIn(200);
+				my_tooltip.css({opacity:0.9, display:"none"}).fadeIn(150);
 
 				// Add the hover class to enable styling the element on hover
 				jQuery(this).addClass("hover");
