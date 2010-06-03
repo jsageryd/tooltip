@@ -1,8 +1,16 @@
 function simple_tooltip(selector, tooltip_class, attribute_name){
 
+	// Initialise variables
 	tt_offset = 15;
 	tt_safetymargin = 10;
 	animating_tooltip = false;
+	first_hover = true;
+	tt_height = 0;
+	tt_width = 0;
+	border_bottom = 0;
+	border_right = 0;
+	last_top_delta = 0;
+	last_left_delta = 0;
 
 	jQuery(selector).each(function(i){
 		if(jQuery(this).attr(attribute_name) != ""){
