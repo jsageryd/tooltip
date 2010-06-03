@@ -1,0 +1,26 @@
+* {
+	font: 12px Verdana;
+}
+.tooltip {
+	z-index: 999;
+	left: -9999px;
+	background-color: #ccc;
+	border: 1px solid #eee;
+	padding: 3px;
+	position: absolute;
+	min-width: 150px;
+	display: none;
+}
+.tooltip p {
+	color: #fff;
+	background-color: #222;
+	padding: 3px 6px;
+	margin: 0;
+}
+.tooltip img {
+	padding: 5px;
+}
+.hover {
+	color: #fa0;
+	cursor: default;
+}
