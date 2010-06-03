@@ -20,7 +20,7 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 
 				// Get window measurements
 				border_bottom = jQuery(window).scrollTop() + jQuery(window).height();
-				border_right = jQuery(window).width();
+				border_right = jQuery(window).scrollLeft() + jQuery(window).width();
 
 				// Get height and width of the tooltip
 				tt_height = my_tooltip.height();
