@@ -1,5 +1,5 @@
 function simple_tooltip(selector, tooltip_class, attribute_name){
-	//Generate code for each tooltip
+	// Generate code for each tooltip
 	jQuery(selector).each(function(i){
 		if(jQuery(this).attr(attribute_name) != ""){
 			if(the_image = new RegExp(/^img:(.+)/).exec(jQuery(this).attr(attribute_name))){
