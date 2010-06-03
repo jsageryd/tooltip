@@ -21,6 +21,5 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 	});
 }
 jQuery(document).ready(function(){
-	simple_tooltip("div", "tooltip", "title");
 	simple_tooltip("span", "tooltip", "title");
 });
