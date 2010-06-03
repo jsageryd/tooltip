@@ -8,7 +8,11 @@
 				//Generate code for each tooltip
 				jQuery(selector).each(function(i){
 					if(jQuery(this).attr(attribute_name) != ""){
-						jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><p>" + jQuery(this).attr(attribute_name) + "</p></div>");
+						if(the_image = new RegExp(/^img:(.+)/).exec(jQuery(this).attr(attribute_name))){
+							jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><p><img src=\"" + the_image[1] + "\" alt=\"[image]\" /></p></div>");
+						}else{
+							jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><p>" + jQuery(this).attr(attribute_name) + "</p></div>");
+						}
 						var my_tooltip = jQuery("#" + tooltip_class + i);
 						jQuery(this).removeAttr(attribute_name).mouseover(function(){
 							my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(200);
@@ -47,6 +51,9 @@
 				padding: 3px 6px;
 				margin: 0;
 			}
+			.tooltip img {
+				padding: 5px;
+			}
 			.hover {
 				color: #fa0;
 				cursor: default;
@@ -54,6 +61,7 @@
 		</style>
 	</head>
 	<body>
-		<span title="むずかしい">難しい</span><span title="かんじ">漢字</span>
+		<p><span title="むずかしい">難しい</span><span title="かんじ">漢字</span></p>
+		<p><span title="img:muzukashii.png">難しい</span><span title="img:kanji.png">漢字</span></p>
 	</body>
 </html>
