@@ -1,5 +1,9 @@
 function simple_tooltip(selector, tooltip_class, attribute_name){
-	// Generate code for each tooltip
+
+	tt_offset = 15;
+	tt_safetymargin = 10;
+	animating_tooltip = false;
+
 	jQuery(selector).each(function(i){
 		if(jQuery(this).attr(attribute_name) != ""){
 			if(the_image = new RegExp(/^img:(.+)/).exec(jQuery(this).attr(attribute_name))){
@@ -9,10 +13,58 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 			}
 			var my_tooltip = jQuery("#" + tooltip_class + i);
 			jQuery(this).removeAttr(attribute_name).mouseover(function(){
-				my_tooltip.css({opacity:0.8, display:"none"}).fadeIn(200);
+				my_tooltip.css({opacity:0.9, display:"none"}).fadeIn(200);
+
+				// Add the hover class to enable styling the element on hover
 				jQuery(this).addClass("hover");
+
+				// Get window measurements
+				border_bottom = jQuery(window).scrollTop() + jQuery(window).height();
+				border_right = jQuery(window).width();
+
+				// Get height and width of the tooltip
+				tt_height = my_tooltip.height();
+				tt_width = my_tooltip.width();
+
+				// Set first_hover to prevent animation
+				first_hover = true;
 			}).mousemove(function(kmouse){
-				my_tooltip.css({left:kmouse.pageX+15, top:kmouse.pageY+15});
+				// If animating, don't move the tooltip (it would flicker)
+				if(animating_tooltip) break;
+
+				// Get mouse position
+				my = kmouse.pageY;
+				mx = kmouse.pageX;
+
+				// Determine where to place the tooltip (above or below cursor?)
+				if(my + tt_offset + tt_height + tt_safetymargin < border_bottom){
+					top_delta = tt_offset;
+				}else{
+					top_delta = -tt_height - tt_offset;
+				}
+
+				// Determine where to place the tooltip (left or right of cursor?)
+				if(mx + tt_offset + tt_width + tt_safetymargin < border_right){
+					left_delta = tt_offset;
+				}else{
+					left_delta = -tt_width - tt_offset;
+				}
+
+				// Set tooltip position
+				top_pos = my + top_delta;
+				left_pos = mx + left_delta;
+
+				// Animate if the relative position of the tooltip has changed
+				if(!first_hover && (top_delta != last_top_delta || left_delta != last_left_delta)){
+					animating_tooltip = true;
+					my_tooltip.animate({left:left_pos, top:top_pos}, 50, 'swing', function(){ animating_tooltip = false; });
+				}else{
+					my_tooltip.css({left:left_pos, top:top_pos});
+				}
+
+				first_hover = false;
+				last_top_delta = top_delta;
+				last_left_delta = left_delta;
 			}).mouseout(function(){
 				my_tooltip.fadeOut(100);
 				jQuery(this).removeClass("hover");
