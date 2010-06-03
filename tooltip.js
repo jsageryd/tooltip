@@ -3,7 +3,7 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 	jQuery(selector).each(function(i){
 		if(jQuery(this).attr(attribute_name) != ""){
 			if(the_image = new RegExp(/^img:(.+)/).exec(jQuery(this).attr(attribute_name))){
-				jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><p><img src=\"" + the_image[1] + "\" alt=\"[image]\" /></p></div>");
+				jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><img src=\"" + the_image[1] + "\" alt=\"[image]\" /></div>");
 			}else{
 				jQuery("body").append("<div class=\"" + tooltip_class + "\" id=\"" + tooltip_class + i + "\"><p>" + jQuery(this).attr(attribute_name) + "</p></div>");
 			}
