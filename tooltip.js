@@ -30,7 +30,7 @@ function simple_tooltip(selector, tooltip_class, attribute_name){
 				first_hover = true;
 			}).mousemove(function(kmouse){
 				// If animating, don't move the tooltip (it would flicker)
-				if(animating_tooltip) break;
+				if(animating_tooltip) return;
 
 				// Get mouse position
 				my = kmouse.pageY;
